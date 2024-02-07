@@ -124,16 +124,16 @@ onMounted(() => {
   <div class="flex flex-col items-center m-4">
     <!-- DEV ONLY -->
     <div class="flex gap-1 absolute right-2 bottom-2">
-      <button class="btn bg-red-500 text-white btn-sm" @click="dev">dev</button>
+      <!-- <button class="btn bg-red-500 text-white btn-sm" @click="dev">dev</button> -->
       <button class="btn bg-red-500 text-white btn-sm" @click="clear">
         clear
       </button>
     </div>
     <!-- Header -->
-    <div class="flex gap-4 items-center">
+    <div class="flex items-center justify-around w-1/3">
       <h1 class="text-5xl font-bold text-gray-200">Life Mistake Calculator</h1>
       <button
-        class="btn bg-primary-content text-primary text-2xl btn-lg"
+        class="btn bg-primary-content text-primary text-2xl btn-md"
         onclick="addGambler.showModal()"
       >
         Add Gambler
