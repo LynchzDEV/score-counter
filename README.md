@@ -1,29 +1,51 @@
-# groupwork
+# Life Mistake Calculator
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a Vue.js application that simulates a game where players can bid and earn credits.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Add players with a name and initial credit amount.
+- Players can bid a certain amount of credits.
+- At the end of each round, the total credits on the table are distributed equally among the selected players.
+- The state of the game (players and table credits) is persisted in the local storage.
 
-## Customize configuration
+## Project setup
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+What things you need to install the software and how to install them.
 
-## Project Setup
+```npm
+Node.js
+```
 
-```sh
+### Installing
+
+A step by step series of examples that tell you how to get a development environment running.
+
+1. **Clone the repo**
+```
+git clone https://github.com/LynchzDEV/score-counter
+```
+2. **Navigate to the project directory**
+```
+cd PROJECT1-SEC-1-2GOOD4U
+```
+3. **Install dependencies**
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Running the Application
 
-```sh
+Explain how to run the application.
+```
 npm run dev
 ```
 
-### Compile and Minify for Production
+This will start the Vue application on a local development server, usually at `http://localhost:5174`.
 
-```sh
+### Building for Production
+
+To build the project for production, run:
+```
 npm run build
 ```
