@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-
-const players = ref(JSON.parse(localStorage.getItem('players')) || []);
+import { fetchPlayers } from './utils/fetchPlayers';
+const players = ref([]);
 const gambler = ref({});
 let tableCredit = ref(0);
 let customBid = ref(0);
@@ -115,8 +115,9 @@ const reward = () => {
 };
 
 onMounted(() => {
-  tableCredit.value = JSON.parse(localStorage.getItem('tableCredit')) || 0;
-  customBid.value = 0;
+  fetchPlayers().then(player => {
+    players.value = player;
+  })
 });
 </script>
 
@@ -140,7 +141,7 @@ onMounted(() => {
         <div id="select-players">
           <select class="select mt-2 select-bordered w-full max-w-xs">
             <option disabled selected>Avalible Players</option>
-            <option v-for="(player,id) in players" :key="id">{{ player.name }}</option>
+            <option v-for="(player, id) in players" :key="id">{{ player.name }}</option>
           </select>
         </div>
       </div>
