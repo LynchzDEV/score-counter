@@ -124,7 +124,8 @@ onMounted(() => {
   <div class="flex flex-col items-center m-4">
     <!-- DEV ONLY -->
     <div class="flex gap-1 absolute right-2 bottom-2">
-      <!-- <button class="btn bg-red-500 text-white btn-sm" @click="dev">dev</button> -->
+
+      <button class="btn bg-red-500 text-white btn-sm" @click="dev">dev</button>
       <button class="btn bg-red-500 text-white btn-sm" @click="clear">
         clear
       </button>
@@ -132,27 +133,24 @@ onMounted(() => {
     <!-- Header -->
     <div class="flex items-center justify-around w-1/3">
       <h1 class="text-5xl font-bold text-gray-200">Life Mistake Calculator</h1>
-      <button
-        class="btn bg-primary-content text-primary text-2xl btn-md"
-        onclick="addGambler.showModal()"
-      >
-        Add Gambler
-      </button>
+      <div class="flex flex-col w-full">
+        <button class="btn bg-primary-content text-primary text-2xl btn-md" onclick="addGambler.showModal()">
+          Add Gambler
+        </button>
+        <div id="select-players">
+          <select class="select mt-2 select-bordered w-full max-w-xs">
+            <option disabled selected>Avalible Players</option>
+            <option v-for="(player,id) in players" :key="id">{{ player.name }}</option>
+          </select>
+        </div>
+      </div>
       <dialog id="addGambler" class="modal">
         <div class="modal-box flex flex-col gap-2">
           <h3 class="font-bold text-xl">Inser name and credits of failure!</h3>
-          <input
-            type="text"
-            class="input input-primary text-white font-semibold"
-            placeholder="Name"
-            v-model="gambler.name"
-          />
-          <input
-            type="number"
-            class="input input-primary text-white font-semibold"
-            placeholder="Credit (default: 50 credits)"
-            v-model="gambler.credit"
-          />
+          <input type="text" class="input input-primary text-white font-semibold" placeholder="Name"
+            v-model="gambler.name" />
+          <input type="number" class="input input-primary text-white font-semibold"
+            placeholder="Credit (default: 50 credits)" v-model="gambler.credit" />
           <div class="modal-action">
             <form method="dialog">
               <button class="btn btn-primary" @click="addGambler">Add</button>
@@ -165,6 +163,7 @@ onMounted(() => {
         </form>
       </dialog>
     </div>
+
     <!-- Content -->
     <div v-if="players.length > 0" class="flex flex-col items-center pt-12">
       <!-- Players -->
@@ -172,16 +171,8 @@ onMounted(() => {
         <div class="flex flex-col gap-2 items-center">
           <h2 class="text-4xl font-bold pb-2">Players List:</h2>
           <div class="flex flex-col gap-2">
-            <div
-              v-for="player in players"
-              :key="player.id"
-              class="flex gap-2 items-center"
-            >
-              <input
-                type="checkbox"
-                class="checkbox checkbox-error"
-                :id="player.id"
-              />
+            <div v-for="player in players" :key="player.id" class="flex gap-2 items-center">
+              <input type="checkbox" class="checkbox checkbox-error" :id="player.id" />
               <div class="text-2xl font-bold">
                 <p>
                   Name:
@@ -193,9 +184,7 @@ onMounted(() => {
               <div class="text-2xl font-bold">
                 <p>
                   With
-                  <span class="text-secondary font-semibold"
-                    >{{ player.credit }} Credit(s)</span
-                  >
+                  <span class="text-secondary font-semibold">{{ player.credit }} Credit(s)</span>
                 </p>
               </div>
             </div>
@@ -212,41 +201,25 @@ onMounted(() => {
       <!-- Controller -->
       <div class="pt-6 flex gap-2 items-center">
         <div class="flex flex-col gap-2">
-          <button
-            class="btn bg-primary-content text-primary text-2xl btn-lg"
-            @click="bid(1)"
-          >
+          <button class="btn bg-primary-content text-primary text-2xl btn-lg" @click="bid(1)">
             <p>Bid <span class="text-secondary">x1</span> credits</p>
           </button>
-          <button
-            class="btn bg-primary-content text-primary text-2xl btn-lg"
-            @click="bid(3)"
-          >
+          <button class="btn bg-primary-content text-primary text-2xl btn-lg" @click="bid(3)">
             <p>Bid <span class="text-secondary">x3</span> credits</p>
           </button>
-          <button
-            class="btn bg-primary-content text-primary text-2xl btn-lg"
-            @click="bid(5)"
-          >
+          <button class="btn bg-primary-content text-primary text-2xl btn-lg" @click="bid(5)">
             <p>Bid <span class="text-secondary">x5</span> credits</p>
           </button>
         </div>
         <div class="flex flex-col gap-2">
-          <button
-            class="btn bg-primary-content text-primary text-2xl btn-lg"
-            onclick="customBid.showModal()"
-          >
+          <button class="btn bg-primary-content text-primary text-2xl btn-lg" onclick="customBid.showModal()">
             <p>Bid <span class="text-secondary">Custom</span> Credit</p>
           </button>
           <dialog id="customBid" class="modal">
             <div class="modal-box flex flex-col gap-2">
               <h3 class="font-bold text-lg">Enter Amout of bid</h3>
-              <input
-                type="number"
-                class="input input-primary text-white font-semibold"
-                v-model="customBid"
-                id="toClear"
-              />
+              <input type="number" class="input input-primary text-white font-semibold" v-model="customBid"
+                id="toClear" />
               <div class="modal-action">
                 <form method="dialog">
                   <button class="btn btn-primary" @click="bid(customBid)">
@@ -259,10 +232,7 @@ onMounted(() => {
               <button>close</button>
             </form>
           </dialog>
-          <button
-            class="btn bg-accent text-primary-content text-2xl btn-lg"
-            @click="reward"
-          >
+          <button class="btn bg-accent text-primary-content text-2xl btn-lg" @click="reward">
             ROUND END
           </button>
         </div>
